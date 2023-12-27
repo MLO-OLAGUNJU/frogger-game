@@ -5,18 +5,56 @@
   font-family: "Poppins", sans-serif;
 }
 
+.colorIt {
+  background-color: white;
+  /* border: 5px solid black;
+  border-radius: 20px; */
+  padding-left: 10px;
+  margin-bottom: 10px;
+  width: 100vw;
+  text-align: center;
+}
+#time-left {
+  padding-bottom: 20px;
+}
+main {
+  margin-left: 450px;
+}
+body {
+  color: black;
+  background: linear-gradient(to right, white, turquoise);
+  padding-top: 20px;
+}
+#start-pause-button:hover {
+  background: linear-gradient(to left, green, cyan);
+  color: white;
+}
+#start-pause-button {
+  color: white;
+  font-size: 20px;
+  border-radius: 20%;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  width: 300px;
+  height: 50px;
+  background: linear-gradient(to right, green, cyan);
+  cursor: pointer;
+}
+
 .grid {
-  border: 1px solid black;
-  height: 182px;
-  width: 182px;
+  background-color: white;
+  border: 10px solid black;
+  height: 380px;
+  width: 380px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .grid div {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
 }
 
 .ending-block {
@@ -55,4 +93,57 @@
 
 .frog {
   background-color: green;
+}
+
+.hintBoard div {
+  height: 20px;
+  margin-top: 5px;
+  width: 20px;
+}
+.hintBoard {
+  background-color: white;
+  width: 40px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+.hintBoard2 {
+  left: 60px;
+  font-size: 20px;
+  background-color: white;
+  width: 200px;
+  position: absolute;
+  bottom: 30px;
+}
+.hintBoard2 p {
+  margin-top: 2px;
+}
+
+.blue {
+  background-color: blue;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.lightblue {
+  background-color: lightblue;
+}
+.brown {
+  background-color: brown;
+}
+
+.black {
+  background-color: black;
+}
+.grey {
+  background-color: lightgrey;
+}
+.flexed {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }

@@ -13,6 +13,7 @@ let currentIndex = 76;
 const width = 9;
 let timerId;
 let currentTime = 20;
+let outcomeTimerId;
 
 const moveFrog = (e) => {
   squares[currentIndex].classList.remove("frog");
@@ -36,8 +37,6 @@ const moveFrog = (e) => {
   squares[currentIndex].classList.add("frog");
 };
 
-document.addEventListener("keyup", moveFrog);
-
 const autoMoveElement = () => {
   currentTime--;
   timeLeftDisplay.textContent = currentTime;
@@ -45,6 +44,9 @@ const autoMoveElement = () => {
   logRight.forEach((logRight) => moveLogRight(logRight));
   carsLeft.forEach((carsLeft) => moveCarLeft(carsLeft));
   carsRight.forEach((carsRight) => moveCarRight(carsRight));
+};
+
+const checkOutcomes = () => {
   lose();
   win();
 };
@@ -149,6 +151,7 @@ const lose = () => {
   ) {
     resultDisplay.innerHTML = "You Lose!";
     clearInterval(timerId);
+    clearInterval(outcomeTimerId);
     squares[currentIndex].classList.remove("frog");
     document.removeEventListener("keyup", moveFrog);
   }
@@ -159,7 +162,22 @@ const win = () => {
     resultDisplay.innerHTML = "You win!";
     clearInterval(timerId);
     document.removeEventListener("keyup", moveFrog);
+    clearInterval(outcomeTimerId);
   }
 };
 
-timerId = setInterval(autoMoveElement, 1000);
+startNPauseButton.addEventListener("click", () => {
+  if (timerId) {
+    startNPauseButton.innerHTML = "Game Paused";
+    clearInterval(timerId);
+    clearInterval(outcomeTimerId);
+    outcomeTimerId = null;
+    timerId = null;
+    document.removeEventListener("keyup", moveFrog);
+  } else {
+    startNPauseButton.innerHTML = "Game Started";
+    timerId = setInterval(autoMoveElement, 1000);
+    outcomeTimerId = setInterval(checkOutcomes, 50);
+    document.addEventListener("keyup", moveFrog);
+  }
+});
