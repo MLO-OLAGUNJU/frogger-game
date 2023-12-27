@@ -96,9 +96,9 @@ body {
 }
 
 .hintBoard div {
-  height: 20px;
-  margin-top: 5px;
-  width: 20px;
+  height: 25px;
+  margin-top: 6px;
+  width: 25px;
 }
 .hintBoard {
   background-color: white;
@@ -108,16 +108,16 @@ body {
   left: 30px;
 }
 .hintBoard2 {
-  left: 60px;
+  left: 70px;
   font-size: 20px;
   background-color: white;
   width: 200px;
   position: absolute;
   bottom: 30px;
 }
-.hintBoard2 p {
+/* .hintBoard2 p {
   margin-top: 2px;
-}
+} */
 
 .blue {
   background-color: blue;
