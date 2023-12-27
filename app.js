@@ -11,6 +11,8 @@ const carsRight = document.querySelectorAll(".car-right");
 
 let currentIndex = 76;
 const width = 9;
+let timerId;
+let currentTime = 20;
 
 const moveFrog = (e) => {
   squares[currentIndex].classList.remove("frog");
@@ -37,10 +39,14 @@ const moveFrog = (e) => {
 document.addEventListener("keyup", moveFrog);
 
 const autoMoveElement = () => {
+  currentTime--;
+  timeLeftDisplay.textContent = currentTime;
   logsLeft.forEach((logsLeft) => moveLogLeft(logsLeft));
   logRight.forEach((logRight) => moveLogRight(logRight));
   carsLeft.forEach((carsLeft) => moveCarLeft(carsLeft));
   carsRight.forEach((carsRight) => moveCarRight(carsRight));
+  lose();
+  win();
 };
 
 const moveLogLeft = (logsLeft) => {
@@ -127,11 +133,33 @@ const moveCarRight = (carsRight) => {
       carsRight.classList.remove("c2");
       carsRight.classList.add("c1");
       break;
-    case carsRight.classList.contains("l3"):
-      carsRight.classList.remove("l3");
-      carsRight.classList.add("l2");
+    case carsRight.classList.contains("c3"):
+      carsRight.classList.remove("c3");
+      carsRight.classList.add("c2");
       break;
   }
 };
 
-setInterval(autoMoveElement, 1000);
+const lose = () => {
+  if (
+    squares[currentIndex].classList.contains("c1") ||
+    squares[currentIndex].classList.contains("l4") ||
+    squares[currentIndex].classList.contains("l5") ||
+    currentTime <= 0
+  ) {
+    resultDisplay.innerHTML = "You Lose!";
+    clearInterval(timerId);
+    squares[currentIndex].classList.remove("frog");
+    document.removeEventListener("keyup", moveFrog);
+  }
+};
+
+const win = () => {
+  if (squares[currentIndex].classList.contains("ending-block")) {
+    resultDisplay.innerHTML = "You win!";
+    clearInterval(timerId);
+    document.removeEventListener("keyup", moveFrog);
+  }
+};
+
+timerId = setInterval(autoMoveElement, 1000);
